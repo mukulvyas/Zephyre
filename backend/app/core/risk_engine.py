@@ -5,6 +5,7 @@ AQI Category x Person Vulnerabilities x Activity x Commute x Home Setup -> (Verd
 """
 
 from typing import List, Tuple
+
 from app.core.aqi_cpcb import AqiCategory
 from app.models.advice import MemberRiskGuidance, RiskVerdict
 from app.models.profile import (
@@ -39,12 +40,12 @@ def compute_member_risk(
     if member.age <= 10:
         score += 15
         reasons.append(
-            f"Children's developing lungs breathe 2-3x more air per kg of body weight than adults."
+            "Children's developing lungs breathe 2-3x more air per kg of body weight than adults."
         )
     elif member.age >= 60:
         score += 15
         reasons.append(
-            f"Senior airway defense and cardiovascular reserve are more vulnerable to fine particulates."
+            "Senior airway defense and cardiovascular reserve are more vulnerable to fine particulates."
         )
 
     # 2. Asthma / Respiratory Condition

@@ -1,6 +1,5 @@
 """Unit tests for Routine Planner and Safest Window."""
 
-import pytest
 from app.core.aqi_cpcb import AqiCategory
 from app.core.routine_planner import (
     find_safest_outdoor_window,

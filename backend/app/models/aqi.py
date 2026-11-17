@@ -1,7 +1,9 @@
 """AQI Reading and Forecast Pydantic Models."""
 
 from typing import List, Optional
+
 from pydantic import BaseModel, Field
+
 from app.core.aqi_cpcb import AqiCategory
 
 

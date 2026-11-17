@@ -1,6 +1,5 @@
 """Unit tests for Impact and Emission Factors Calculator."""
 
-import pytest
 from app.core.impact_calculator import (
     calculate_damp_mop_benefit,
     calculate_n95_filtration_benefit,

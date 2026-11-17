@@ -1,6 +1,5 @@
 """Unit tests for Regional Air Quality Context Lookup."""
 
-import pytest
 from app.core.region_context import DEFAULT_CONTEXT, get_region_context
 
 

@@ -1,6 +1,5 @@
 """Unit tests for Indian CPCB AQI Calculation and Breakpoint Boundaries."""
 
-import pytest
 from app.core.aqi_cpcb import (
     AqiCategory,
     calculate_cpcb_aqi,

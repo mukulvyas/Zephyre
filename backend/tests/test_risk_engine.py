@@ -1,6 +1,5 @@
 """Unit tests for Personal Risk Scoring Engine."""
 
-import pytest
 from app.core.aqi_cpcb import AqiCategory
 from app.core.risk_engine import compute_household_clean_score, compute_member_risk
 from app.models.advice import RiskVerdict

@@ -1,6 +1,5 @@
 """Unit tests for Input Sanitization, Prompt-Injection Defense, and Medical Guard."""
 
-import pytest
 from app.core.safety import (
     MAX_QUESTION_LENGTH,
     check_medical_emergency,

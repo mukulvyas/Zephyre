@@ -8,10 +8,11 @@ Generates:
 """
 
 from typing import List, Tuple
+
 from app.core.aqi_cpcb import AqiCategory, get_aqi_category
 from app.models.advice import ChecklistAction
 from app.models.aqi import HourlyForecastPoint, SafeWindow
-from app.models.profile import CommuteMode, HouseholdSetup, UserProfile
+from app.models.profile import CommuteMode, UserProfile
 
 
 def find_safest_outdoor_window(hourly_points: List[HourlyForecastPoint]) -> Tuple[SafeWindow, str]:

@@ -15,6 +15,7 @@ Particulate & Filtration Assumptions:
 """
 
 from typing import List
+
 from app.models.impact import (
     ActionImpactBreakdown,
     CalculationDetail,

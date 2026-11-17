@@ -2,7 +2,9 @@
 
 from enum import Enum
 from typing import List, Optional
+
 from pydantic import BaseModel, Field
+
 from app.models.aqi import AQIReading, SafeWindow
 
 
