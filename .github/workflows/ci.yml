@@ -1,0 +1,70 @@
+name: Zephyre CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend-test-and-lint:
+    name: Backend Lint & Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Backend Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Backend Lint Check (ruff)
+        run: |
+          cd backend
+          ruff check app tests
+
+      - name: Backend Pytest with Coverage
+        run: |
+          cd backend
+          pytest -v --cov=app/core --cov-report=term-missing
+
+  frontend-test-and-lint:
+    name: Frontend Lint & Vitest & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Frontend ESLint
+        run: |
+          cd frontend
+          npm run lint
+
+      - name: Frontend Vitest Suite
+        run: |
+          cd frontend
+          npm test
+
+      - name: Frontend Production Build
+        run: |
+          cd frontend
+          npm run build
