@@ -14,7 +14,7 @@ const AppContent: React.FC = () => {
   const isOnboarding = location.pathname === '/onboarding';
 
   return (
-    <div className="min-h-screen bg-cloud-100 dark:bg-cloud-900 text-on-surface antialiased flex flex-col font-sans selection:bg-mint-200">
+    <div className="min-h-screen bg-surface text-on-surface antialiased flex flex-col font-sans selection:bg-secondary-container">
       {/* Skip to Content Link for WCAG 2.1 AA Accessibility */}
       <a
         href="#main-content"

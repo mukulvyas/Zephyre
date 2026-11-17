@@ -110,7 +110,7 @@ export const AqiGauge: React.FC<AqiGaugeProps> = ({
             </div>
           </div>
           <div className="flex items-center justify-center gap-2.5 py-1 px-2">
-            <Droplets className="w-5 h-5 text-skybrand-500" />
+            <Droplets className="w-5 h-5 text-primary-container" />
             <div className="flex flex-col text-left">
               <span className="text-[11px] text-on-surface-variant font-medium">Humidity</span>
               <span className="text-sm font-bold text-on-surface">{reading.humidity || 68}%</span>
