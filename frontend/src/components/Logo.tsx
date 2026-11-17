@@ -12,9 +12,15 @@ export const Logo: React.FC<LogoProps> = ({
   showText = true,
 }) => {
   const iconDimensions = {
-    sm: 'w-7 h-7 p-1.5',
-    md: 'w-9 h-9 p-2',
-    lg: 'w-12 h-12 p-2.5',
+    sm: 'w-7 h-7',
+    md: 'w-9 h-9',
+    lg: 'w-12 h-12',
+  }[size];
+
+  const svgDimensions = {
+    sm: 'w-4 h-4',
+    md: 'w-5 h-5',
+    lg: 'w-7 h-7',
   }[size];
 
   const textClasses = {
@@ -25,26 +31,26 @@ export const Logo: React.FC<LogoProps> = ({
 
   return (
     <div className={`flex items-center gap-2.5 min-w-0 ${className}`}>
-      {/* Mint circle with blue 'Z' swirl vector logo from Google Stitch */}
+      {/* Exact Mint Circle with Sky-Blue Wind-Swirl "Z" from Google Stitch */}
       <div
-        className={`${iconDimensions} rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 shadow-sm`}
+        className={`${iconDimensions} rounded-full bg-emerald-100 flex items-center justify-center text-sky-600 flex-shrink-0 shadow-sm`}
         aria-hidden="true"
       >
         <svg
-          className="w-full h-full text-primary"
+          className={svgDimensions}
           fill="none"
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2.5"
+          strokeWidth="2.2"
           viewBox="0 0 24 24"
         >
-          <path d="M4 6h12a4 4 0 0 1 0 8H8a4 4 0 0 0 0 8h12" />
+          <path d="M7 8.5C8 6.8 11 6.5 13.5 7.5C16 8.5 17 10 16 11.5L8.5 15.5C7.2 16.2 8.5 17.5 11 17.5C13.5 17.5 15.8 16.5 17 15.5" />
         </svg>
       </div>
 
       {showText && (
-        <div className="flex flex-col min-w-0">
+        <div className="flex flex-col min-w-0 text-left">
           <span className={`font-headline-sm ${textClasses} text-primary font-bold tracking-tight truncate`}>
             Zephyre
           </span>

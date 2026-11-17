@@ -63,7 +63,7 @@ export async function getDailyAdvice(profile: UserProfile): Promise<DailyAdviceR
     console.warn('Using client-side offline fallback for daily advice:', e);
     // Client-side fallback if backend unreachable
     return {
-      greeting: `Good morning, ${profile.user_name}.`,
+      greeting: `Good morning, ${profile.user_name.trim()}.`,
       one_line_instruction: 'Keep windows sealed and bundle up with an N95 when stepping out.',
       aqi_reading: {
         aqi: 340,

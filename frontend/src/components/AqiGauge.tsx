@@ -31,8 +31,19 @@ export const AqiGauge: React.FC<AqiGaugeProps> = ({
       {/* Warm Ambient Underglow Backdrop */}
       <div
         className={`absolute -top-12 -right-12 w-56 h-56 rounded-full blur-3xl pointer-events-none ${theme.cardGlow}`}
+        style={{
+          backgroundColor:
+            theme.category === 'Very Poor'
+              ? 'rgba(255, 218, 214, 0.5)'
+              : theme.category === 'Good'
+              ? 'rgba(108, 248, 187, 0.35)'
+              : undefined,
+        }}
       />
-      <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-primary-fixed/20 blur-2xl pointer-events-none" />
+      <div
+        className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-primary-fixed/20 blur-2xl pointer-events-none"
+        style={{ backgroundColor: 'rgba(204, 229, 255, 0.35)' }}
+      />
 
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* Radial SVG Gauge Container */}
@@ -52,7 +63,7 @@ export const AqiGauge: React.FC<AqiGaugeProps> = ({
               cy="80"
               fill="transparent"
               r="66"
-              stroke="currentColor"
+              stroke="#dce9ff"
               strokeWidth="12"
             />
             {/* Active CPCB progress track */}
@@ -62,7 +73,7 @@ export const AqiGauge: React.FC<AqiGaugeProps> = ({
               cy="80"
               fill="transparent"
               r="66"
-              stroke="currentColor"
+              stroke={theme.colorHex}
               strokeWidth="12"
               strokeDasharray={circumference}
               strokeDashoffset={dynamicOffset}
@@ -88,6 +99,10 @@ export const AqiGauge: React.FC<AqiGaugeProps> = ({
         {/* Empathetic Badge: CPCB Category Standard */}
         <div
           className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${theme.badgeBg} ${theme.badgeText} mt-2 shadow-xs`}
+          style={{
+            backgroundColor: theme.category === 'Very Poor' ? '#ffdad6' : undefined,
+            color: theme.category === 'Very Poor' ? '#93000a' : undefined,
+          }}
         >
           <Shield className="w-4 h-4 fill-current" />
           <span className="text-sm font-bold">{theme.cpcbLabel}</span>

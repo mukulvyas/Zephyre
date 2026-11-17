@@ -63,7 +63,7 @@ async def get_daily_advice(profile: UserProfile):
     lifestyle = generate_lifestyle_banner(reading.category)
     region_info = get_region_context(loc.state or loc.name)
 
-    greeting = f"Good morning, {profile.user_name}."
+    greeting = f"Good morning, {profile.user_name.strip()}."
 
     return DailyAdviceResponse(
         greeting=greeting,

@@ -60,8 +60,17 @@ export const Today: React.FC<TodayProps> = ({ profile }) => {
       {/* Greeting Header */}
       <div className="flex flex-col gap-1 px-1">
         <div className="flex items-center justify-between">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-error animate-pulse" />
+          <div
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container shadow-xs"
+            style={{
+              backgroundColor: advice.aqi_reading.category === 'Very Poor' ? '#ffdad6' : undefined,
+              color: advice.aqi_reading.category === 'Very Poor' ? '#93000a' : undefined,
+            }}
+          >
+            <span
+              className="w-2 h-2 rounded-full bg-error animate-pulse"
+              style={{ backgroundColor: '#ba1a1a' }}
+            />
             <span className="text-[11px] font-bold tracking-wider uppercase">
               {advice.aqi_reading.category.toUpperCase()} AIR
             </span>
