@@ -1,0 +1,20 @@
+{
+  "app_name": "झेफायर",
+  "app_tagline": "तुमच्या कुटुंबासाठी शुद्ध हवेचा मार्गदर्शक",
+  "tab_today": "आज",
+  "tab_ask": "विचारा",
+  "tab_impact": "प्रभाव",
+  "tab_family": "माझे कुटुंब",
+  "live_aqi": "थेट AQI",
+  "do_today": "आजच्या कृती",
+  "outdoor_windows": "बाहेर पडण्याची वेळ",
+  "safest_window": "सर्वात सुरक्षित वेळ",
+  "family_care": "कुटुंब संरक्षण मार्गदर्शन",
+  "household_clean_score": "घरगुती स्वच्छ हवा स्कोअर",
+  "search_placeholder": "शहराचे किंवा परिसराचे नाव शोधा...",
+  "use_current_location": "सध्याचे स्थान वापरा",
+  "delete_data": "माझा डेटा हटवा",
+  "offline_mode_tag": "ऑफलाइन कोच मोड",
+  "how_calculated": "आम्ही हे कसे मोजले",
+  "share_plan": "आजची योजना शेअर करा"
+}

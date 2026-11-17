@@ -1,0 +1,20 @@
+{
+  "app_name": "Zephyre",
+  "app_tagline": "A gentle breeze for your family",
+  "tab_today": "Today",
+  "tab_ask": "Ask",
+  "tab_impact": "Impact",
+  "tab_family": "My Family",
+  "live_aqi": "Live AQI",
+  "do_today": "Do Today",
+  "outdoor_windows": "Outdoor Windows",
+  "safest_window": "Safest window",
+  "family_care": "Family Care Guidance",
+  "household_clean_score": "Household Clean Score",
+  "search_placeholder": "Search locality or city in India...",
+  "use_current_location": "Use Current Location",
+  "delete_data": "Delete My Data",
+  "offline_mode_tag": "Offline Coach Mode",
+  "how_calculated": "How we calculated this",
+  "share_plan": "Share today's plan"
+}

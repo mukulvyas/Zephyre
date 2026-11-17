@@ -1,0 +1,20 @@
+{
+  "app_name": "ज़ेफायर",
+  "app_tagline": "आपके परिवार के लिए स्वच्छ हवा का झोंका",
+  "tab_today": "आज",
+  "tab_ask": "पूछें",
+  "tab_impact": "प्रभाव",
+  "tab_family": "मेरा परिवार",
+  "live_aqi": "लाइव एक्यूआई",
+  "do_today": "आज के कार्य",
+  "outdoor_windows": "बाहर जाने का समय",
+  "safest_window": "सबसे सुरक्षित समय",
+  "family_care": "परिवार सुरक्षा मार्गदर्शन",
+  "household_clean_score": "घर का स्वच्छ वायु स्कोर",
+  "search_placeholder": "भारत में अपना शहर या इलाका खोजें...",
+  "use_current_location": "वर्तमान स्थान का उपयोग करें",
+  "delete_data": "मेरा डेटा हटाएं",
+  "offline_mode_tag": "ऑफलाइन कोच मोड",
+  "how_calculated": "हमने यह कैसे गणना की",
+  "share_plan": "आज की योजना साझा करें"
+}
