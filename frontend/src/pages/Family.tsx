@@ -2,8 +2,7 @@ import React from 'react';
 import { UserProfile } from '../types';
 import { useAdvice } from '../hooks/useAdvice';
 import { FamilyCard } from '../components/FamilyCard';
-import { DemoDataTag } from '../components/DemoDataTag';
-import { Shield, Sparkles, CheckCircle, Trash2 } from 'lucide-react';
+import { Shield, Sparkles, CheckCircle } from 'lucide-react';
 
 interface FamilyProps {
   profile: UserProfile;
@@ -118,37 +117,99 @@ export const Family: React.FC<FamilyProps> = ({ profile, onResetData }) => {
         </div>
       </section>
 
-      {/* Room Air Microclimate Estimates (Tagged "Demo data" for honesty) */}
-      <section className="bg-surface-container-lowest rounded-24 p-5 sm:p-6 shadow-sm border border-outline-variant/20 flex flex-col gap-3">
+      {/* Room Air Estimates Section matching Stitch exactly */}
+      <section className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-bold text-on-surface">Indoor Sanctuary Air (Estimated)</h3>
-          <DemoDataTag label="Demo benchmark" />
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[20px] text-primary">sensors</span>
+            <h2 className="text-base font-bold text-on-surface">Room Air Estimates</h2>
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium flex-shrink-0">
+              Demo data
+            </span>
+          </div>
+          <span className="text-xs text-on-surface-variant">Live updates • Just now</span>
         </div>
-        <p className="text-xs text-on-surface-variant">
-          Simulated room filtration estimates based on standard residential air exchange rates.
-        </p>
 
-        <div className="grid grid-cols-3 gap-2.5 pt-1 text-center">
-          <div className="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/15">
-            <span className="text-xs text-on-surface-variant font-medium block">Living Room</span>
-            <span className="text-base font-bold text-secondary mt-0.5 block">32 µg/m³</span>
-            <span className="text-[10px] text-on-surface-variant">Clean buffer</span>
+        <div className="grid grid-cols-1 gap-2.5">
+          {/* Living Room */}
+          <div className="bg-surface-container-lowest rounded-24 p-4 shadow-xs border border-outline-variant/15 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[22px]">weekend</span>
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-sm font-bold text-on-surface truncate">Living Room</span>
+                <span className="text-xs text-on-surface-variant truncate">Purifier on</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-end flex-shrink-0">
+              <div className="flex items-baseline gap-1">
+                <span className="text-lg font-bold text-secondary">52</span>
+                <span className="text-xs text-on-surface-variant">AQI</span>
+              </div>
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">
+                Satisfactory / Good
+              </span>
+            </div>
           </div>
-          <div className="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/15">
-            <span className="text-xs text-on-surface-variant font-medium block">Kids Bedroom</span>
-            <span className="text-base font-bold text-secondary mt-0.5 block">24 µg/m³</span>
-            <span className="text-[10px] text-on-surface-variant">HEPA filter</span>
+
+          {/* Kids Room */}
+          <div className="bg-surface-container-lowest rounded-24 p-4 shadow-xs border border-outline-variant/15 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center flex-shrink-0 text-on-secondary-fixed">
+                <span className="material-symbols-outlined text-[22px]">toys</span>
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-sm font-bold text-on-surface truncate">Kids' Room</span>
+                <span className="text-xs text-on-surface-variant truncate">Purifier on</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-end flex-shrink-0">
+              <div className="flex items-baseline gap-1">
+                <span className="text-lg font-bold text-secondary">34</span>
+                <span className="text-xs text-on-surface-variant">AQI</span>
+              </div>
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">
+                Good
+              </span>
+            </div>
           </div>
-          <div className="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/15">
-            <span className="text-xs text-on-surface-variant font-medium block">Kitchen</span>
-            <span className="text-base font-bold text-amber-600 mt-0.5 block">42 µg/m³</span>
-            <span className="text-[10px] text-on-surface-variant">Exhaust active</span>
+
+          {/* Balcony */}
+          <div className="bg-surface-container-lowest rounded-24 p-4 shadow-xs border border-outline-variant/15 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0 text-on-error-container">
+                <span className="material-symbols-outlined text-[22px]">balcony</span>
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-sm font-bold text-on-surface truncate">Balcony</span>
+                <span className="text-xs text-error truncate font-medium">Outdoor</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-end flex-shrink-0">
+              <div className="flex items-baseline gap-1">
+                <span className="text-lg font-bold text-error">384</span>
+                <span className="text-xs text-on-surface-variant">AQI</span>
+              </div>
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-error-container text-error font-semibold">
+                Very Poor
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Delete / Clear Data Button */}
-      <div className="pt-2">
+      {/* Primary Add Family Member Action Button matching Stitch */}
+      <div className="pt-1 flex flex-col gap-2">
+        <button
+          type="button"
+          onClick={() => alert('Add Family Member: Enter details in your profile settings.')}
+          className="w-full h-12 bg-primary text-on-primary rounded-full text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] hover:bg-primary-container"
+        >
+          <span className="material-symbols-outlined text-[20px]">add</span>
+          <span>Add Family Member</span>
+        </button>
+
         <button
           type="button"
           onClick={() => {
@@ -156,10 +217,9 @@ export const Family: React.FC<FamilyProps> = ({ profile, onResetData }) => {
               onResetData();
             }
           }}
-          className="w-full py-3 px-4 rounded-24 bg-surface-container-low hover:bg-rose-50 text-error text-xs font-bold border border-outline-variant/30 flex items-center justify-center gap-2 transition active:scale-98"
+          className="w-full py-2.5 text-xs text-error hover:underline opacity-80"
         >
-          <Trash2 className="w-4 h-4" />
-          <span>Delete My Data (Clear Local Storage)</span>
+          Delete My Data (Clear Storage)
         </button>
       </div>
     </div>

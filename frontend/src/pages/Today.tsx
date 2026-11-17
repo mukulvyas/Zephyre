@@ -56,145 +56,135 @@ export const Today: React.FC<TodayProps> = ({ profile }) => {
   const completedCount = advice.checklist.filter((act) => checkedTasks[act.id]).length;
 
   return (
-    <div className="w-full pb-24 text-left">
-      {/* 2-column responsive layout for desktop (lg:grid-cols-12), 1-column mobile */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-6xl mx-auto">
-        {/* Left Column: Greeting, Live AQI Radial Gauge & Safe Window Forecast */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
-          {/* Greeting Header */}
-          <div className="flex flex-col gap-1 px-1">
-            <div className="flex items-center justify-between">
-              <div
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container shadow-xs"
-                style={{
-                  backgroundColor: advice.aqi_reading.category === 'Very Poor' ? '#ffdad6' : undefined,
-                  color: advice.aqi_reading.category === 'Very Poor' ? '#93000a' : undefined,
-                }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full bg-error animate-pulse"
-                  style={{ backgroundColor: '#ba1a1a' }}
-                />
-                <span className="text-[11px] font-bold tracking-wider uppercase">
-                  {advice.aqi_reading.category.toUpperCase()} AIR
-                </span>
-              </div>
-              <span className="text-xs text-on-surface-variant flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" />
-                {advice.aqi_reading.data_freshness_text || '12m ago'}
-              </span>
-            </div>
-
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight mt-1">
-              {advice.greeting}
-            </h1>
-            <p className="text-xs sm:text-sm text-on-surface-variant flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-              <span>{profile.location.name}</span>
-            </p>
+    <div className="w-full flex flex-col gap-6 text-left">
+      {/* Greeting Header */}
+      <div className="flex flex-col gap-1 px-1">
+        <div className="flex items-center justify-between">
+          <div
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container shadow-xs"
+            style={{
+              backgroundColor: advice.aqi_reading.category === 'Very Poor' ? '#ffdad6' : undefined,
+              color: advice.aqi_reading.category === 'Very Poor' ? '#93000a' : undefined,
+            }}
+          >
+            <span
+              className="w-2 h-2 rounded-full bg-error animate-pulse"
+              style={{ backgroundColor: '#ba1a1a' }}
+            />
+            <span className="text-[11px] font-bold tracking-wider uppercase">
+              {advice.aqi_reading.category.toUpperCase()} AIR
+            </span>
           </div>
-
-          {/* Hero AQI Radial Gauge Card */}
-          <AqiGauge
-            reading={advice.aqi_reading}
-            directiveText={advice.one_line_instruction}
-          />
-
-          {/* Best Time to Go Out Forecast Card */}
-          <SafeWindowTimeline
-            safeWindow={advice.safe_window}
-          />
+          <span className="text-xs text-on-surface-variant flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            {advice.aqi_reading.data_freshness_text || '12m ago'}
+          </span>
         </div>
 
-        {/* Right Column: Family Care Guidance, Do Today Checklist & Lifestyle Reassurance */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          {/* Family Safety Overview Row */}
-          <section className="flex flex-col gap-3">
-            <div className="flex items-center justify-between px-1">
-              <h2 className="text-base font-bold text-on-surface">Family Care Guidance</h2>
-              <span className="text-xs text-primary font-bold">
-                {advice.family_guidance.length} active shields
-              </span>
-            </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight mt-1">
+          {advice.greeting}
+        </h1>
+        <p className="text-xs sm:text-sm text-on-surface-variant flex items-center gap-1.5">
+          <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+          <span>{profile.location.name}</span>
+        </p>
+      </div>
 
-            {/* Horizontally scrollable row on mobile, full width cards on desktop */}
-            <div className="flex lg:flex-col gap-3 overflow-x-auto pb-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
-              {advice.family_guidance.map((guidance) => (
-                <FamilyCard
-                  key={guidance.member_id}
-                  guidance={guidance}
-                  compact={true}
-                  className="lg:w-full"
-                />
-              ))}
-            </div>
-          </section>
+      {/* Hero AQI Radial Gauge Card */}
+      <AqiGauge
+        reading={advice.aqi_reading}
+        directiveText={advice.one_line_instruction}
+      />
 
-          {/* Do Today Checklist */}
-          <section className="flex flex-col gap-3">
-            <div className="flex items-center justify-between px-1">
-              <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold text-on-surface">Do Today</h2>
-                <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full font-bold transition-colors ${
-                    completedCount === totalTasks
-                      ? 'bg-secondary text-on-secondary'
-                      : 'bg-secondary-container text-on-secondary-container'
-                  }`}
-                >
-                  {completedCount === totalTasks
-                    ? 'All done! Pure calm 🌿'
-                    : `${completedCount} of ${totalTasks} done`}
-                </span>
-              </div>
-              <span className="text-xs text-on-surface-variant">Tap to check</span>
-            </div>
+      {/* Best Time to Go Out Forecast Card */}
+      <SafeWindowTimeline
+        safeWindow={advice.safe_window}
+      />
 
-            <div className="flex flex-col gap-2.5">
-              {advice.checklist.map((action) => (
-                <ChecklistItem
-                  key={action.id}
-                  action={action}
-                  isCompleted={Boolean(checkedTasks[action.id])}
-                  onToggle={() => toggleTask(action.id)}
-                />
-              ))}
-            </div>
-          </section>
+      {/* Family Safety Overview Row */}
+      <section className="flex flex-col gap-3">
+        <div className="flex items-center justify-between px-1">
+          <h2 className="text-base font-bold text-on-surface">Family Care Guidance</h2>
+          <span className="text-xs text-primary font-bold">
+            {advice.family_guidance.length} active shields
+          </span>
+        </div>
 
-          {/* Reassuring Lifestyle Banner */}
-          <div className="rounded-24 bg-surface-container-low p-4 sm:p-5 flex items-center gap-3.5 border border-outline-variant/20 shadow-xs">
-            <div className="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs flex-shrink-0">
-              <Sparkles className="w-5 h-5 text-primary" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-bold text-on-surface">You've got this handled</span>
-              <span className="text-xs text-on-surface-variant leading-snug">
-                {advice.lifestyle_banner}
-              </span>
-            </div>
+        {/* Horizontally scrollable row on mobile */}
+        <div className="flex gap-3 overflow-x-auto pb-1.5 -mx-4 px-4 scrollbar-none">
+          {advice.family_guidance.map((guidance) => (
+            <FamilyCard
+              key={guidance.member_id}
+              guidance={guidance}
+              compact={true}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Do Today Checklist */}
+      <section className="flex flex-col gap-3">
+        <div className="flex items-center justify-between px-1">
+          <div className="flex items-center gap-2">
+            <h2 className="text-base font-bold text-on-surface">Do Today</h2>
+            <span
+              className={`text-xs px-2.5 py-0.5 rounded-full font-bold transition-colors ${
+                completedCount === totalTasks
+                  ? 'bg-secondary text-on-secondary'
+                  : 'bg-secondary-container text-on-secondary-container'
+              }`}
+            >
+              {completedCount === totalTasks
+                ? 'All done! Pure calm 🌿'
+                : `${completedCount} of ${totalTasks} done`}
+            </span>
           </div>
+          <span className="text-xs text-on-surface-variant">Tap to check</span>
+        </div>
 
-          {/* Share Today's Plan Button */}
-          <button
-            type="button"
-            onClick={handleShare}
-            className="w-full py-3.5 px-4 rounded-24 bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-98 shadow-xs"
-          >
-            {copied ? (
-              <>
-                <CheckCheck className="w-4 h-4 text-secondary" />
-                <span className="text-secondary">Summary copied to clipboard (ready for WhatsApp)!</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="w-4 h-4 text-primary" />
-                <span>Share today's clean-air plan</span>
-              </>
-            )}
-          </button>
+        <div className="flex flex-col gap-2.5">
+          {advice.checklist.map((action) => (
+            <ChecklistItem
+              key={action.id}
+              action={action}
+              isCompleted={Boolean(checkedTasks[action.id])}
+              onToggle={() => toggleTask(action.id)}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Reassuring Lifestyle Banner */}
+      <div className="rounded-24 bg-surface-container-low p-4 sm:p-5 flex items-center gap-3.5 border border-outline-variant/20 shadow-xs">
+        <div className="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs flex-shrink-0">
+          <Sparkles className="w-5 h-5 text-primary" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm font-bold text-on-surface">You've got this handled</span>
+          <span className="text-xs text-on-surface-variant leading-snug">
+            {advice.lifestyle_banner}
+          </span>
         </div>
       </div>
+
+      {/* Share Today's Plan Button */}
+      <button
+        type="button"
+        onClick={handleShare}
+        className="w-full py-3.5 px-4 rounded-24 bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition active:scale-98 shadow-xs"
+      >
+        {copied ? (
+          <>
+            <CheckCheck className="w-4 h-4 text-secondary" />
+            <span className="text-secondary">Summary copied to clipboard (ready for WhatsApp)!</span>
+          </>
+        ) : (
+          <>
+            <Share2 className="w-4 h-4 text-primary" />
+            <span>Share today's clean-air plan</span>
+          </>
+        )}
+      </button>
     </div>
   );
 };

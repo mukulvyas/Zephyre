@@ -4,7 +4,7 @@ import { askCoach } from '../api/client';
 import { ChatBubble, ChatMessage } from '../components/ChatBubble';
 import { SkeletonCard } from '../components/SkeletonCard';
 import { ErrorState } from '../components/ErrorState';
-import { Send, Mic, MicOff, RotateCcw, Sparkles } from 'lucide-react';
+import { RotateCcw, Sparkles } from 'lucide-react';
 
 interface AskProps {
   profile: UserProfile;
@@ -222,46 +222,61 @@ export const Ask: React.FC<AskProps> = ({ profile }) => {
         {error && <ErrorState message={error} onRetry={() => handleSend()} />}
       </div>
 
+      {/* Family Guard Status Banner matching Stitch design */}
+      <div className="w-full p-4 rounded-2xl bg-surface-container flex items-center gap-3.5 shadow-xs mt-2">
+        <div className="w-10 h-10 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center flex-shrink-0 shadow-xs">
+          <span className="material-symbols-outlined text-[20px]">shield_with_heart</span>
+        </div>
+        <div className="flex flex-col min-w-0">
+          <span className="text-sm font-bold text-on-surface">Family Guard is On</span>
+          <p className="text-xs text-on-surface-variant">
+            Real-time alerts will trigger if living room levels cross 60 µg/m³.
+          </p>
+        </div>
+      </div>
+
       {/* Fixed Sticky Chat Input Bar */}
-      <div className="fixed bottom-16 md:bottom-4 left-0 right-0 z-30 p-3 max-w-2xl mx-auto pointer-events-none">
+      <div className="fixed bottom-16 left-1/2 -translate-x-1/2 w-full max-w-md z-30 p-3 pointer-events-none">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSend();
           }}
-          className="pointer-events-auto bg-surface-container-lowest/95 backdrop-blur-xl border border-outline-variant/30 rounded-full shadow-lg p-1.5 pl-4 flex items-center gap-2"
+          className="pointer-events-auto bg-surface-container-lowest/95 backdrop-blur-xl border border-outline-variant/30 rounded-full shadow-lg p-1.5 pl-3 flex items-center gap-2"
         >
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Ask about outdoor sports, air purifiers, masks..."
-            maxLength={300}
-            className="flex-1 bg-transparent text-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none"
-            aria-label="Ask a question about air quality"
-          />
-
-          {/* Voice Input Button */}
+          {/* Voice Mic Trigger */}
           <button
             type="button"
             onClick={handleVoiceInput}
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition active:scale-95 ${
-              isListening ? 'bg-error text-white animate-pulse' : 'text-on-surface-variant hover:text-primary'
+            className={`w-10 h-10 rounded-full flex items-center justify-center transition active:scale-95 flex-shrink-0 ${
+              isListening
+                ? 'bg-tertiary-fixed text-tertiary animate-pulse ring-2 ring-tertiary'
+                : 'bg-surface-container-low text-tertiary hover:bg-tertiary-fixed'
             }`}
             title="Speak with voice input"
             aria-label="Voice input"
           >
-            {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+            <span className="material-symbols-outlined text-[20px]">mic</span>
           </button>
+
+          <input
+            type="text"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="Ask about today's air"
+            maxLength={300}
+            className="flex-1 bg-transparent text-sm text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none min-w-0"
+            aria-label="Ask about today's air"
+          />
 
           {/* Submit Button */}
           <button
             type="submit"
             disabled={!inputText.trim() || loading}
-            className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center transition hover:bg-primary-container disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 shadow-sm"
+            className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center transition hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 shadow-sm flex-shrink-0"
             aria-label="Send message"
           >
-            <Send className="w-4 h-4 ml-0.5" />
+            <span className="material-symbols-outlined text-[20px]">arrow_upward</span>
           </button>
         </form>
       </div>

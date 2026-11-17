@@ -201,6 +201,114 @@ export const ImpactCard: React.FC<ImpactCardProps> = ({
           );
         })}
       </section>
+
+      {/* Visual Lifestyle Story Card matching Stitch */}
+      <section className="bg-surface-container-lowest rounded-24 overflow-hidden shadow-sm flex flex-col border border-outline-variant/20">
+        <div className="relative w-full h-44">
+          <img
+            className="w-full h-full object-cover"
+            alt="Joyful multi-generational Indian family walking happily in an urban botanical park in the early morning sunlight"
+            src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=800&auto=format&fit=crop&q=80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/20 to-transparent flex items-end p-5">
+            <span className="text-surface-container-lowest text-sm sm:text-base font-bold">
+              Safe family outings start with quiet awareness
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Clean Rounded Weekly Bar Chart matching Stitch */}
+      <section className="bg-surface-container-lowest rounded-24 p-5 sm:p-6 shadow-sm border border-outline-variant/20 flex flex-col gap-4 text-left">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-base font-bold text-on-surface">Family Clean Hours</h3>
+            <p className="text-xs text-on-surface-variant">Hours spent in purified or protected air</p>
+          </div>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-semibold">
+            <span className="material-symbols-outlined text-[16px]">trending_up</span>
+            <span>Peak: 19 hrs</span>
+          </div>
+        </div>
+
+        {/* Chart Canvas */}
+        <div className="w-full pt-4 pb-1">
+          <div className="flex items-end justify-between gap-2 h-40 px-1">
+            {/* Mon */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-on-surface-variant font-medium">14h</span>
+              <div className="w-full bg-primary-fixed rounded-t-full" style={{ height: '60%' }} />
+              <span className="text-[11px] text-on-surface-variant font-medium">Mon</span>
+            </div>
+            {/* Tue */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-on-surface-variant font-medium">16h</span>
+              <div className="w-full bg-primary-fixed rounded-t-full" style={{ height: '72%' }} />
+              <span className="text-[11px] text-on-surface-variant font-medium">Tue</span>
+            </div>
+            {/* Wed */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-on-surface-variant font-medium">15h</span>
+              <div className="w-full bg-primary-fixed rounded-t-full" style={{ height: '66%' }} />
+              <span className="text-[11px] text-on-surface-variant font-medium">Wed</span>
+            </div>
+            {/* Thu (Peak) */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end relative">
+              <span className="absolute -top-6 text-[10px] text-secondary font-bold bg-secondary-fixed/70 px-1.5 py-0.5 rounded-full">
+                Top
+              </span>
+              <span className="text-[11px] text-secondary font-bold">19h</span>
+              <div className="w-full bg-secondary rounded-t-full shadow-sm scale-105" style={{ height: '92%' }} />
+              <span className="text-[11px] text-secondary font-bold">Thu</span>
+            </div>
+            {/* Fri */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-on-surface-variant font-medium">17h</span>
+              <div className="w-full bg-secondary-fixed-dim rounded-t-full" style={{ height: '78%' }} />
+              <span className="text-[11px] text-on-surface-variant font-medium">Fri</span>
+            </div>
+            {/* Sat */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-outline">--</span>
+              <div className="w-full bg-surface-container-high rounded-t-full" style={{ height: '15%' }} />
+              <span className="text-[11px] text-outline font-medium">Sat</span>
+            </div>
+            {/* Sun */}
+            <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+              <span className="text-[11px] text-outline">--</span>
+              <div className="w-full bg-surface-container-high rounded-t-full" style={{ height: '15%' }} />
+              <span className="text-[11px] text-outline font-medium">Sun</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Chart Legend */}
+        <div className="flex items-center justify-between pt-2 border-t border-outline-variant/15 text-xs text-on-surface-variant">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-primary-fixed" />
+            <span>Standard Day</span>
+          </div>
+          <div className="flex items-center gap-2 font-medium">
+            <span className="w-3 h-3 rounded-full bg-secondary" />
+            <span>Peak Protection (Thu)</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Encouraging Footer Note matching Stitch */}
+      <footer className="p-5 rounded-24 bg-surface-container flex items-center gap-3.5 text-on-surface border border-outline-variant/15 text-left">
+        <div className="w-10 h-10 min-w-[40px] rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs">
+          <span className="material-symbols-outlined text-[22px] text-primary">favorite</span>
+        </div>
+        <div className="flex flex-col">
+          <p className="text-sm font-bold text-on-surface leading-snug">
+            Every small switch adds up to healthy lungs for your family.
+          </p>
+          <span className="text-xs text-on-surface-variant mt-0.5">
+            From closed windows at dusk to warm steam inhalations, you are keeping them thriving.
+          </span>
+        </div>
+      </footer>
     </div>
   );
 };

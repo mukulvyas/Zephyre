@@ -39,7 +39,7 @@ describe('Ask AI Coach Screen', () => {
       </BrowserRouter>
     );
 
-    const input = screen.getByPlaceholderText(/Ask about outdoor sports/i);
+    const input = screen.getByPlaceholderText(/Ask about today's air|Ask about outdoor/i);
     fireEvent.change(input, { target: { value: 'Can we go for a run at 7 PM?' } });
 
     const submitBtn = screen.getByRole('button', { name: /Send message/i });
