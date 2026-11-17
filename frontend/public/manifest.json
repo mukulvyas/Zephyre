@@ -1,0 +1,17 @@
+{
+  "name": "Zephyre Air Quality Coach",
+  "short_name": "Zephyre",
+  "description": "Daily air quality routines and low-emission guidance for Indian families",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3F6F8",
+  "theme_color": "#10B981",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64 192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
